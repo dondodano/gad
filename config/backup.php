@@ -118,14 +118,14 @@ return [
              * The disk names on which the backups will be stored.
              */
             'disks' => [
-                'local',
+                'public',
             ],
         ],
 
         /*
          * The directory where the temporary files will be stored.
          */
-        'temporary_directory' => storage_path('app/backup-temp'),
+        'temporary_directory' => storage_path('app/public/backup-temp'),
 
         /*
          * The password to be used for archive encryption.
@@ -213,7 +213,7 @@ return [
     'monitor_backups' => [
         [
             'name' => 'backups',
-            'disks' => ['local'],
+            'disks' => ['public'],
             'health_checks' => [
                 \Spatie\Backup\Tasks\Monitor\HealthChecks\MaximumAgeInDays::class => 1,
                 \Spatie\Backup\Tasks\Monitor\HealthChecks\MaximumStorageInMegabytes::class => 5000,

@@ -18,7 +18,7 @@ class Index extends Component
 
     public function backup()
     {
-        Artisan::call('backup:run --only-files');
+        Artisan::call('backup:run --only-files --disable-notifications');
         toastr('Backup created!');
         $this->all;
     }
@@ -49,14 +49,14 @@ class Index extends Component
     public function download($file)
     {
         $filePath = 'backups/' . decipher($file);
-        // if(!Storage::disk('public')->exists($filePath))
-        // {
-        //     $copy = Storage::copy($filePath, 'public/' . $filePath);
-        //     if($copy)
-        //     {
-        //         return Storage::download('public/'. $filePath);
-        //     }
-        // }
+        if(!Storage::disk('public')->exists($filePath))
+        {
+            $copy = Storage::copy($filePath, 'public/' . $filePath);
+            if($copy)
+            {
+                return Storage::download('public/'. $filePath);
+            }
+        }
 
         return Storage::download('public/'. $filePath);
     }
@@ -64,7 +64,7 @@ class Index extends Component
     public function getAllProperty()
     {
         $files = []; $fileExtension = 'zip';
-        $scan_files = scandir(storage_path('app/backups/'));
+        $scan_files = scandir(storage_path('app/public/backups/'));
 
         foreach($scan_files as $file)
         {
@@ -75,7 +75,7 @@ class Index extends Component
                 {
                     array_push($files, [
                         'filename' => $file,
-                        'location' => storage_path('app/backups/'). $file
+                        'location' => storage_path('app/public/backups/'). $file
                     ]);
                 }
             }
