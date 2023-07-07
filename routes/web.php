@@ -58,7 +58,7 @@ Route::prefix('/schema')->middleware(['auth'])->group(function(){
 /**
  * Categories
  */
-Route::prefix('/category')->middleware(['auth'])->group(function(){
+Route::prefix('/category')->middleware(['auth','can:is_super, can:is_admin'])->group(function(){
     Route::get('/', Category\Index::class);
     Route::get('/create', Category\Create::class);
     Route::get('/edit/{id}', Category\Edit::class);
@@ -68,7 +68,7 @@ Route::prefix('/category')->middleware(['auth'])->group(function(){
 /**
  * Preleminaries
  */
-Route::prefix('/preliminary')->middleware(['auth'])->group(function(){
+Route::prefix('/preliminary')->middleware(['auth','can:is_super, can:is_admin'])->group(function(){
     Route::get('/', Preliminary\Index::class);
     Route::get('/create', Preliminary\Create::class);
     Route::get('/edit/{id}', Preliminary\Edit::class);
@@ -76,18 +76,9 @@ Route::prefix('/preliminary')->middleware(['auth'])->group(function(){
 
 
 /**
- * Worksheets
- */
-// Route::prefix('/worksheet')->middleware(['auth'])->group(function(){
-//     Route::get('/', Worksheet\Index::class);
-// });
-
-
-
-/**
  * Users
  */
-Route::prefix('/user')->middleware(['auth'])->group(function(){
+Route::prefix('/user')->middleware(['auth','can:is_super, can:is_admin'])->group(function(){
     Route::get('/', User\Index::class);
     Route::get('/create', User\Create::class);
     Route::get('/edit/{id}', User\Edit::class);
@@ -97,7 +88,7 @@ Route::prefix('/user')->middleware(['auth'])->group(function(){
 /**
  * Logs
  */
-Route::prefix('/logs')->middleware(['auth'])->group(function(){
+Route::prefix('/logs')->middleware(['auth','can:is_super, can:is_admin'])->group(function(){
     Route::get('/user', LogUser\Index::class);
 
     Route::get('/activity', LogActivity\Index::class);
@@ -107,7 +98,7 @@ Route::prefix('/logs')->middleware(['auth'])->group(function(){
 /**
  * Setting
  */
-Route::prefix('/setting')->middleware(['auth'])->group(function(){
+Route::prefix('/setting')->middleware(['auth','can:is_super, can:is_admin'])->group(function(){
     Route::get('/general', SettingGeneral\Index::class);
 
     Route::get('/webicon', SettingWebicon\Index::class);
@@ -118,7 +109,7 @@ Route::prefix('/setting')->middleware(['auth'])->group(function(){
 /**
  * Backup
  */
-Route::prefix('/backup')->middleware(['auth'])->group(function(){
+Route::prefix('/backup')->middleware(['auth', 'can:is_super'])->group(function(){
     Route::get('/', Backup\Index::class);
 });
 
@@ -126,7 +117,7 @@ Route::prefix('/backup')->middleware(['auth'])->group(function(){
 /**
  * Maintenance
  */
-Route::prefix('/maintenance')->middleware(['auth'])->group(function(){
+Route::prefix('/maintenance')->middleware(['auth', 'can:is_super'])->group(function(){
     Route::get('/', Maintenance\Index::class);
 });
 
