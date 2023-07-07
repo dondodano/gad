@@ -39,7 +39,7 @@ class Login extends Component
                 'password' => Auths::user()->password,
                 'role_id' => Auths::user()->role_id,
                 'role' => Auths::user()->user_role->term,
-                'avatar' => Auth::user()->avatar,
+                'avatar' => Auths::user()->avatar,
                 'temp_avatar' => !empty(Auths::user()->temp_avatar) ? Auths::user()->temp_avatar->avatar : '',
                 'name_array' => $fullname,
                 'webicon' => SettingGeneral::findOrFail(1)->web_icon,

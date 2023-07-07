@@ -47,92 +47,100 @@
                         <div data-i18n="Worksheet">Worksheet</div>
                     </a>
                 </li> --}}
-                <li class="menu-item {{ activeSide('category') }}">
-                    <a href="/category" class="menu-link">
-                        <div data-i18n="Category">Category</div>
-                    </a>
-                </li>
-                <li class="menu-item {{ activeSide('preliminary') }}">
-                    <a href="/preliminary" class="menu-link">
-                        <div data-i18n="Preliminary">Preliminary</div>
-                    </a>
-                </li>
+
+                @role(['super', 'admin'])
+                    <li class="menu-item {{ activeSide('category') }}">
+                        <a href="/category" class="menu-link">
+                            <div data-i18n="Category">Category</div>
+                        </a>
+                    </li>
+                    <li class="menu-item {{ activeSide('preliminary') }}">
+                        <a href="/preliminary" class="menu-link">
+                            <div data-i18n="Preliminary">Preliminary</div>
+                        </a>
+                    </li>
+                @endrole
             </ul>
         </li>
 
+        @role(['super', 'admin'])
+            <!-- User -->
+            <li class="menu-header small text-uppercase">
+                <span class="menu-header-text">User</span>
+            </li>
+            <li class="menu-item {{ activeSide('user') }}">
+                <a href="/user" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-user"></i>
+                    <div data-i18n="User">User</div>
+                </a>
+            </li>
+        @endrole
 
-        <!-- User -->
-        <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">User</span>
-        </li>
-        <li class="menu-item {{ activeSide('user') }}">
-            <a href="/user" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-user"></i>
-                <div data-i18n="User">User</div>
-            </a>
-        </li>
-
-        <!-- Logs -->
-        <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">History</span>
-        </li>
-        {{-- <li class="menu-item {{ openSide(['logs']) }}">
-            <a href="javascript:void(0)" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-history"></i>
-                <div data-i18n="Logs">Logs</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item {{ activeSide('logs') }}">
-                    <a href="/logs/user" class="menu-link">
-                        <div data-i18n="User log">User log</div>
-                    </a>
-                </li>
-                <li class="menu-item {{ activeSide('logs') }}">
-                    <a href="/logs/activity" class="menu-link">
-                        <div data-i18n="Activity log">Activity log</div>
-                    </a>
-                </li>
-            </ul>
-        </li> --}}
-
-
-        <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">System</span>
-        </li>
-
-        <li class="menu-item {{ openSide(['setting','general', 'webicon']) }}">
-            <a href="javascript:void(0)" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-cog"></i>
-                <div data-i18n="Setting">Setting</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item {{ activeSide('general') }}">
-                    <a href="/setting/general" class="menu-link">
-                        <div data-i18n="General">General</div>
-                    </a>
-                </li>
-                <li class="menu-item {{ activeSide('webicon') }}">
-                    <a href="/setting/webicon" class="menu-link">
-                        <div data-i18n="Web Icon">Web Icon</div>
-                    </a>
-                </li>
-            </ul>
-        </li>
+        @role(['super', 'admin'])
+            <!-- Logs -->
+            <li class="menu-header small text-uppercase">
+                <span class="menu-header-text">History</span>
+            </li>
+            {{-- <li class="menu-item {{ openSide(['logs']) }}">
+                <a href="javascript:void(0)" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-history"></i>
+                    <div data-i18n="Logs">Logs</div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item {{ activeSide('logs') }}">
+                        <a href="/logs/user" class="menu-link">
+                            <div data-i18n="User log">User log</div>
+                        </a>
+                    </li>
+                    <li class="menu-item {{ activeSide('logs') }}">
+                        <a href="/logs/activity" class="menu-link">
+                            <div data-i18n="Activity log">Activity log</div>
+                        </a>
+                    </li>
+                </ul>
+            </li> --}}
+        @endrole
 
 
-        <li class="menu-item {{ activeSide('backup') }}">
-            <a href="/backup" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-hdd"></i>
-                <div data-i18n="Backup">Backup</div>
-            </a>
-        </li>
+        @role(['super', 'admin'])
+            <li class="menu-header small text-uppercase">
+                <span class="menu-header-text">System</span>
+            </li>
 
-        <li class="menu-item {{ activeSide('maintenance') }}">
+            <li class="menu-item {{ openSide(['setting','general', 'webicon']) }}">
+                <a href="javascript:void(0)" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-cog"></i>
+                    <div data-i18n="Setting">Setting</div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item {{ activeSide('general') }}">
+                        <a href="/setting/general" class="menu-link">
+                            <div data-i18n="General">General</div>
+                        </a>
+                    </li>
+                    <li class="menu-item {{ activeSide('webicon') }}">
+                        <a href="/setting/webicon" class="menu-link">
+                            <div data-i18n="Web Icon">Web Icon</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="menu-item {{ activeSide('backup') }}">
+                <a href="/backup" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-hdd"></i>
+                    <div data-i18n="Backup">Backup</div>
+                </a>
+            </li>
+
+            <li class="menu-item {{ activeSide('maintenance') }}">
             <a href="/maintenance" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-chip"></i>
                 <div data-i18n="Maintenance">Maintenance</div>
             </a>
         </li>
+        @endrole
 
     </ul>
 </aside>
