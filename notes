@@ -1,0 +1,31 @@
+# Laravel Installation
+composer create-project laravel/laravel example-app
+
+# node_module Installation
+npm install
+
+# Install Pusher for Pusher Channels
+composer require pusher/pusher-php-server
+
+# Upload to Git
+excute command of git
+
+# Livewire Installation
+composer require livewire/livewire
+
+# Install DomPDF
+composer require barryvdh/laravel-dompdf
+php artisan vendor:publish --provider="Barryvdh\DomPDF\ServiceProvider"
+
+# Install Toastr (by yoeunes)
+composer require yoeunes/toastr
+
+# Install PHPFlasher
+composer require php-flasher/flasher-sweetalert-laravel
+composer require php-flasher/flasher-notyf-laravel
+
+# Install Laravel IDE Helper
+composer require --dev barryvdh/laravel-ide-helper
+    # Commands
+    php artisan ide-helper:generate
+    php artisan ide-helper:models
