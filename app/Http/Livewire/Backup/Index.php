@@ -28,7 +28,7 @@ class Index extends Component
         $file_path = 'backups/' . decipher($file);
 
 
-        if(!Storage::disk('local')->exists($file_path))
+        if(!Storage::disk('public')->exists($file_path))
         {
             toastr("File does not exist!", "error");
             return;
