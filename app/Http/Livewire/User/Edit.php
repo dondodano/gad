@@ -31,7 +31,7 @@ class Edit extends Component
 
     public function update()
     {
-        if(strlen($this->email) == 0   || strlen($this->role) == 0 || strlen($this->firstname) == 0 || strlen($this->middlename) == 0 || strlen($this->lastname) == 0 )
+        if(strlen($this->email) == 0   || strlen($this->role) == 0 || strlen($this->firstname) == 0 || strlen($this->lastname) == 0 )
         {
             toastr("Please fill all required fields!", "error");
             return ;

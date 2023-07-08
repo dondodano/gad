@@ -129,20 +129,20 @@
                                     </thead>
                                     <tbody>
 
-                                        @if(!isset($files))
+                                        @if(!isset($backupList))
                                             {!! emptyEndRow(2) !!}
                                         @else
-                                            @if(!is_countable($files))
+                                            @if(!is_countable($backupList))
                                                 {!! emptyEndRow(2) !!}
                                             @else
-                                                @if(count($files) == 0)
+                                                @if(count($backupList) == 0)
                                                     {!! emptyEndRow(2) !!}
                                                 @endif
 
-                                                @foreach ($files as $file )
+                                                @foreach ($backupList as $file )
                                                     <tr id="row-{{ $loop->index }}">
-                                                        <td>{{ $file['filename'] }}</td>
-                                                        <td>{{ date("M. d, Y h:i:s A", filectime($file["location"])) }}</td>
+                                                        <td class="text-wrap">{{ $file['filename'] }}</td>
+                                                        <td class="text-wrap">{{ date("M. d, Y h:i:s A", filectime($file["location"])) }}</td>
                                                     </td>
                                                 @endforeach
                                             @endif
@@ -154,9 +154,10 @@
 
                         <div class="row">
                             <div class="col-12 mb-4">
-                                <button class="btn btn-primary d-grid w-100">
+                                <button class="btn btn-primary d-grid w-100" wire:click.prevent="quickBackup" wire:loading.attr="disabled" wire:targe="quickBackup">
                                     <span class="d-flex align-items-center justify-content-center text-nowrap">
-                                        <i class='bx bx-hdd bx-xs me-1'></i>New Backup
+                                        <i class='bx bx-hdd bx-xs me-1' wire:loading.remove wire:target="quickBackup"></i>New Backup
+                                        <span class="spinner-border spinner-border-sm text-primary" role="status" id="spiner" wire:loading wire:target="quickBackup"></span>
                                     </span>
                                 </button>
                             </div>
