@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\UserTempAvatar;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -58,5 +59,31 @@ class User extends Authenticatable
     public function temp_avatar()
     {
         return $this->hasOne(UserTempAvatar::class, 'user_id', 'id');
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::created(function($user){
+            activity()
+                ->causedBy(Auth::user())
+                ->performedOn($user)
+                ->log('created');
+        });
+
+        static::updated(function($user){
+            activity()
+                ->causedBy(Auth::user())
+                ->performedOn($user)
+                ->log('updated');
+        });
+
+        static::deleted(function($user){
+            activity()
+                ->causedBy(Auth::user())
+                ->performedOn($user)
+                ->log('deleted');
+        });
     }
 }

@@ -89,8 +89,6 @@ Route::prefix('/user')->middleware(['auth','can:is_super, can:is_admin'])->group
  * Logs
  */
 Route::prefix('/logs')->middleware(['auth','can:is_super, can:is_admin'])->group(function(){
-    Route::get('/user', LogUser\Index::class);
-
     Route::get('/activity', LogActivity\Index::class);
 });
 

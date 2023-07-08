@@ -88,11 +88,6 @@
                 </a>
                 <ul class="menu-sub">
                     <li class="menu-item {{ activeSide('logs') }}">
-                        <a href="/logs/user" class="menu-link">
-                            <div data-i18n="User log">User log</div>
-                        </a>
-                    </li>
-                    <li class="menu-item {{ activeSide('logs') }}">
                         <a href="/logs/activity" class="menu-link">
                             <div data-i18n="Activity log">Activity log</div>
                         </a>

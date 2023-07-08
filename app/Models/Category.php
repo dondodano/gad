@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Worksheet;
 use App\Models\Preliminary;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -31,5 +32,32 @@ class Category extends Model
     public function category_worksheets()
     {
         return $this->hasMany(Worksheet::class, 'category_id', 'id');
+    }
+
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::created(function($category){
+            activity()
+                ->causedBy(Auth::user())
+                ->performedOn($category)
+                ->log('created');
+        });
+
+        static::updated(function($category){
+            activity()
+                ->causedBy(Auth::user())
+                ->performedOn($category)
+                ->log('updated');
+        });
+
+        static::deleted(function($category){
+            activity()
+                ->causedBy(Auth::user())
+                ->performedOn($category)
+                ->log('deleted');
+        });
     }
 }

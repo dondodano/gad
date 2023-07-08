@@ -2,11 +2,12 @@
 
 namespace Spatie\Activitylog\Models;
 
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
+use App\Models\User;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Spatie\Activitylog\Contracts\Activity as ActivityContract;
 
 /**
@@ -128,5 +129,10 @@ class Activity extends Model implements ActivityContract
     public function scopeForBatch(Builder $query, string $batchUuid): Builder
     {
         return $query->where('batch_uuid', $batchUuid);
+    }
+
+    /**Relation to User as causer */
+    public function itsowner(){
+        return $this->hasOne(User::class, 'id', 'causer_id');
     }
 }

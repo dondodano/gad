@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Category;
 use App\Models\Worksheet;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -34,5 +35,31 @@ class Preliminary extends Model
     public function belongworksheet()
     {
         return $this->belongsTo(Worksheet::class, 'id','preliminary_id');
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::created(function($preliminary){
+            activity()
+                ->causedBy(Auth::user())
+                ->performedOn($preliminary)
+                ->log('created');
+        });
+
+        static::updated(function($preliminary){
+            activity()
+                ->causedBy(Auth::user())
+                ->performedOn($preliminary)
+                ->log('updated');
+        });
+
+        static::deleted(function($preliminary){
+            activity()
+                ->causedBy(Auth::user())
+                ->performedOn($preliminary)
+                ->log('deleted');
+        });
     }
 }
