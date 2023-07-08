@@ -24,9 +24,13 @@ Route::middleware(['onproduction'])->group(function(){
     Route::get('/optimize', function(){
         Artisan::call('view:clear');
         Artisan::call('optimize');
+        return 'Optimized';
     });
     Route::get('/symlink', function(){
         Artisan::call('storage:link');
+    });
+    Route::get('/deploy', function(){
+        Artisan::call('migrate');
     });
 });
 
