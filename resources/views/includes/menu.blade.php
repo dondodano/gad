@@ -81,7 +81,7 @@
             <li class="menu-header small text-uppercase">
                 <span class="menu-header-text">History</span>
             </li>
-            {{-- <li class="menu-item {{ openSide(['logs']) }}">
+            <li class="menu-item {{ openSide(['logs']) }}">
                 <a href="javascript:void(0)" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx-history"></i>
                     <div data-i18n="Logs">Logs</div>
@@ -98,7 +98,7 @@
                         </a>
                     </li>
                 </ul>
-            </li> --}}
+            </li>
         @endrole
 
 

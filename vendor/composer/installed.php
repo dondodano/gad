@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'b016c76fdee080cea90304c0b45a6b63f8c5ca3d',
+        'reference' => '978fc578889baa65264ea2996443b43591bfd299',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -463,7 +463,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'b016c76fdee080cea90304c0b45a6b63f8c5ca3d',
+            'reference' => '978fc578889baa65264ea2996443b43591bfd299',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -1207,6 +1207,15 @@
             'install_path' => __DIR__ . '/../spatie/ignition',
             'aliases' => array(),
             'dev_requirement' => true,
+        ),
+        'spatie/laravel-activitylog' => array(
+            'pretty_version' => '4.7.3',
+            'version' => '4.7.3.0',
+            'reference' => 'ec65a478a909b8df1b4f0c3c45de2592ca7639e5',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../spatie/laravel-activitylog',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'spatie/laravel-backup' => array(
             'pretty_version' => '8.1.11',
