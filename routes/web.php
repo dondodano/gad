@@ -20,13 +20,14 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\Schema\SchemaController;
 
-
-Route::get('/optimize', function(){
-    Artisan::call('view:clear');
-    Artisan::call('optimize');
-});
-Route::get('/symlink', function(){
-Artisan::call('storage:link');
+Route::middleware(['onproduction'])->group(function(){
+    Route::get('/optimize', function(){
+        Artisan::call('view:clear');
+        Artisan::call('optimize');
+    });
+    Route::get('/symlink', function(){
+        Artisan::call('storage:link');
+    });
 });
 
 Route::get('/', Dashboard\Index::class)->middleware(['auth']);
