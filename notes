@@ -29,3 +29,7 @@ composer require --dev barryvdh/laravel-ide-helper
     # Commands
     php artisan ide-helper:generate
     php artisan ide-helper:models
+
+# During deployment on hosting
+npm install --save-dev vite laravel-vite-plugin
+ npm run build
