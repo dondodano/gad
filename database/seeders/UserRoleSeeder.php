@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\UserRole;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class UserRoleSeeder extends Seeder
 {
@@ -12,7 +13,7 @@ class UserRoleSeeder extends Seeder
      */
     public function run(): void
     {
-        UserRoles::create([
+        UserRole::create([
             'term' => 'Super',
             'is_visible' => 0
         ],[

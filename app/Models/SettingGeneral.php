@@ -28,7 +28,7 @@ class SettingGeneral extends Model
         static::created(function($settingGeneral){
             activity()
                 ->causedBy(Auth::user())
-                ->performedOn($preliminary)
+                ->performedOn($settingGeneral)
                 ->log('created');
         });
 

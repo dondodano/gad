@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
             UserRoleSeeder::class,
             UserSeeder::class,
             UserTempAvatarSeeder::class,
-            SettingGeneralSeedeer::class
+            SettingGeneralSeeder::class
         ]);
     }
 }
