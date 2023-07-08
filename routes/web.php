@@ -28,9 +28,19 @@ Route::middleware(['onproduction'])->group(function(){
     });
     Route::get('/symlink', function(){
         Artisan::call('storage:link');
+        return 'Storage Linked';
+    });
+    Route::get('/migrate', function(){
+        Artisan::call('migrate');
+        return 'Migrated';
+    });
+    Route::get('/seed', function(){
+        Artisan::call('db:seed');
+        return 'DB Seed!';
     });
     Route::get('/deploy', function(){
-        Artisan::call('migrate');
+        Artisan::call('deploy:now');
+        return 'System Deployed!';
     });
 });
 
