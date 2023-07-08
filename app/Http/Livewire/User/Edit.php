@@ -6,6 +6,7 @@ use App\Models\User;
 use Livewire\Component;
 use App\Models\UserRole;
 use App\Models\UserTempAvatar;
+use Illuminate\Support\Facades\Auth as Auths;
 
 class Edit extends Component
 {
@@ -61,6 +62,10 @@ class Edit extends Component
 
         if($user)
         {
+            activity()
+                ->causedBy(Auths::user())
+                ->performedOn($this->user)
+                ->log('updated');
             toastr("User successfully updated!", "success");
         }
     }

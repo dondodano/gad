@@ -48,6 +48,11 @@ class Index extends Component
             'password' => $hashedPassword
         ]);
 
+        activity()
+            ->causedBy(Auths::user())
+            ->performedOn($this->user)
+            ->log('updated');
+
         session([ 'password' => $hashedPassword ]);
         toastr("Password successfully updated!", "success");
         $this->resetExcept([

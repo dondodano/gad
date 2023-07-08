@@ -69,6 +69,11 @@ class Index extends Component
             unlink(storage_path('app/livewire-tmp/') . $this->avatar->getFilename());
         }
 
+        activity()
+            ->causedBy(Auths::user())
+            ->performedOn($this->user)
+            ->log('updated');
+
         toastr('User profile updated');
         $this->dispatchBrowserEvent('reloadComponent');
     }

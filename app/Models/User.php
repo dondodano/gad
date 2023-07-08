@@ -72,12 +72,12 @@ class User extends Authenticatable
                 ->log('created');
         });
 
-        static::updated(function($user){
-            activity()
-                ->causedBy(Auth::user())
-                ->performedOn($user)
-                ->log('updated');
-        });
+        // static::updated(function($user){
+        //     activity()
+        //         ->causedBy(Auth::user())
+        //         ->performedOn($user)
+        //         ->log('updated');
+        // });
 
         static::deleted(function($user){
             activity()

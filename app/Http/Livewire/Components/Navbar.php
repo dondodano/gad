@@ -10,6 +10,12 @@ class Navbar extends Component
 
     public function logout()
     {
+        activity()
+        ->causedBy(Auths::user())
+        ->performedOn(Auths::user())
+        ->log('logged-out');
+
+
         session()->forget('session');
         session()->invalidate();
         Auths::logout();

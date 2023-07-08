@@ -70,6 +70,14 @@
                                                     <span class="badge bg-label-danger">{{ strtoupper($activity->description) }}</span>
                                                     @break
 
+                                                @case('logged-in')
+                                                    <span class="badge bg-label-success">{{ strtoupper($activity->description) }}</span>
+                                                    @break
+
+                                                @case('logged-out')
+                                                    <span class="badge bg-label-warning">{{ strtoupper($activity->description) }}</span>
+                                                    @break
+
                                                 @default
 
                                             @endswitch

@@ -46,6 +46,11 @@ class Login extends Component
                 'current_year' => setToday('Y'),
             ]);
 
+            activity()
+                ->causedBy(Auths::user())
+                ->performedOn(Auths::user())
+                ->log('logged-in');
+
             toastr("Welcome! You have successfully logged in.", "success");
             return redirect()->intended('/dashboard');
         }else{
