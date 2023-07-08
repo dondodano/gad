@@ -135,13 +135,27 @@
             </li>
 
             <li class="menu-item {{ activeSide('maintenance') }}">
-            <a href="/maintenance" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-chip"></i>
-                <div data-i18n="Maintenance">Maintenance</div>
-            </a>
-        </li>
+                <a href="/maintenance" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-chip"></i>
+                    <div data-i18n="Maintenance">Maintenance</div>
+                </a>
+            </li>
         @endrole
 
+        @role(['user'])
+            <li class="menu-item {{ activeSide('profile') }}">
+                <a href="/my/profile" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-user"></i>
+                    <div data-i18n="My Profile">My Profile</div>
+                </a>
+            </li>
+            <li class="menu-item {{ activeSide('password') }}">
+                <a href="/my/password" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-lock-alt"></i>
+                    <div data-i18n="My Password">My Password</div>
+                </a>
+            </li>
+        @endrole
     </ul>
 </aside>
 
