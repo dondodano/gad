@@ -73,7 +73,7 @@ Route::prefix('/schema')->middleware(['auth'])->group(function(){
 /**
  * Categories
  */
-Route::prefix('/category')->middleware(['auth','can:is_super, can:is_admin'])->group(function(){
+Route::prefix('/category')->middleware(['auth','can:is_bothAdmin'])->group(function(){
     Route::get('/', Category\Index::class);
     Route::get('/create', Category\Create::class);
     Route::get('/edit/{id}', Category\Edit::class);
@@ -83,7 +83,7 @@ Route::prefix('/category')->middleware(['auth','can:is_super, can:is_admin'])->g
 /**
  * Preleminaries
  */
-Route::prefix('/preliminary')->middleware(['auth','can:is_super, can:is_admin'])->group(function(){
+Route::prefix('/preliminary')->middleware(['auth','can:is_bothAdmin'])->group(function(){
     Route::get('/', Preliminary\Index::class);
     Route::get('/create', Preliminary\Create::class);
     Route::get('/edit/{id}', Preliminary\Edit::class);
@@ -93,7 +93,7 @@ Route::prefix('/preliminary')->middleware(['auth','can:is_super, can:is_admin'])
 /**
  * Users
  */
-Route::prefix('/user')->middleware(['auth','can:is_super, can:is_admin'])->group(function(){
+Route::prefix('/user')->middleware(['auth','can:is_bothAdmin'])->group(function(){
     Route::get('/', User\Index::class);
     Route::get('/create', User\Create::class);
     Route::get('/edit/{id}', User\Edit::class);
@@ -103,7 +103,7 @@ Route::prefix('/user')->middleware(['auth','can:is_super, can:is_admin'])->group
 /**
  * Logs
  */
-Route::prefix('/logs')->middleware(['auth','can:is_super, can:is_admin'])->group(function(){
+Route::prefix('/logs')->middleware(['auth','can:is_bothAdmin'])->group(function(){
     Route::get('/activity', LogActivity\Index::class);
 });
 
@@ -111,7 +111,7 @@ Route::prefix('/logs')->middleware(['auth','can:is_super, can:is_admin'])->group
 /**
  * Setting
  */
-Route::prefix('/setting')->middleware(['auth','can:is_super, can:is_admin'])->group(function(){
+Route::prefix('/setting')->middleware(['auth','can:is_bothAdmin'])->group(function(){
     Route::get('/general', SettingGeneral\Index::class);
 
     Route::get('/webicon', SettingWebicon\Index::class);

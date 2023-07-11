@@ -120,21 +120,21 @@
                     </li>
                 </ul>
             </li>
+            @role(['super'])
+                <li class="menu-item {{ activeSide('backup') }}">
+                    <a href="/backup" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-hdd"></i>
+                        <div data-i18n="Backup">Backup</div>
+                    </a>
+                </li>
 
-
-            <li class="menu-item {{ activeSide('backup') }}">
-                <a href="/backup" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-hdd"></i>
-                    <div data-i18n="Backup">Backup</div>
-                </a>
-            </li>
-
-            <li class="menu-item {{ activeSide('maintenance') }}">
-                <a href="/maintenance" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-chip"></i>
-                    <div data-i18n="Maintenance">Maintenance</div>
-                </a>
-            </li>
+                <li class="menu-item {{ activeSide('maintenance') }}">
+                    <a href="/maintenance" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-chip"></i>
+                        <div data-i18n="Maintenance">Maintenance</div>
+                    </a>
+                </li>
+                @endrole
         @endrole
 
         @role(['user'])

@@ -16,6 +16,11 @@ class Edit extends Component
     {
         $this->user = User::findOrFail($id);
 
+        if($this->user->role_id == 1)
+        {
+            return abort(404);
+        }
+
         $this->firstname = $this->user->firstname;
         $this->middlename = $this->user->middlename;
         $this->lastname = $this->user->lastname;

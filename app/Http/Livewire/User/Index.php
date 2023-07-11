@@ -5,6 +5,7 @@ namespace App\Http\Livewire\User;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Auth as Auths;
 
 class Index extends Component
 {
@@ -28,16 +29,18 @@ class Index extends Component
     public function updatedSearch()
     {
         $wildCard = "%".$this->search."%";
-        $this->all->where('firstname', 'like', $wildCard)
-            ->orWhere('middlename', 'like', $wildCard)
-            ->orWhere('lastname', 'like', $wildCard)
-            ->orWhere('extension', 'like', $wildCard)
-            ->orWhere('email', 'like', $wildCard);
+        $this->all->where('firstname', 'like', $wildCard)->where('role_id','<>',1)->where('id', '<>', Auths::user()->id)
+            ->orWhere('middlename', 'like', $wildCard)->where('role_id','<>',1)->where('id', '<>', Auths::user()->id)
+            ->orWhere('lastname', 'like', $wildCard)->where('role_id','<>',1)->where('id', '<>', Auths::user()->id)
+            ->orWhere('extension', 'like', $wildCard)->where('role_id','<>',1)->where('id', '<>', Auths::user()->id)
+            ->orWhere('email', 'like', $wildCard)->where('role_id','<>',1)->where('id', '<>', Auths::user()->id);
     }
 
     public function getAllProperty()
     {
-        return User::query();
+        return User::query()->with(['user_role' => function($with){
+            $with->where('is_visible',1);
+        }])->where('role_id','<>',1)->where('id', '<>', Auths::user()->id);
     }
 
     public function delete($id)
